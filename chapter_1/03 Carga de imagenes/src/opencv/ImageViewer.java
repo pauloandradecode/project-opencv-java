@@ -33,26 +33,26 @@ public class ImageViewer
         m = matrix;
         title = text;
         // valores de ancho y alto
-        width = 640;
-        height = 480;
+        width = m.cols();
+        height = m.rows();
     }
     
     // Inicializamos componentes
     public void show()
     {
         v = new JFrame(title);
-        v.setSize(width, height);
+        v.setSize(width + 20, height + 20);
         v.setResizable(false);
         v.setLayout(null);
         
         // Componentes
         mainPanel = new JPanel();
-        mainPanel.setBounds(10, 10, width - 20, height - 20);
+        mainPanel.setBounds(10, 10, width, height);
         mainPanel.setBackground(Color.white);
         mainPanel.setLayout(null);
         
         lblImg = new JLabel();
-        lblImg.setBounds(0, 0, width - 20, height - 20);
+        lblImg.setBounds(0, 0, width, height);
         ImageProcessor imgPro = new ImageProcessor();
         Image img = imgPro.toBufferedImage(m);
         lblImg.setIcon(new ImageIcon(img));
