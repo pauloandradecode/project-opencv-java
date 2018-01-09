@@ -26,6 +26,7 @@ public class ImageViewer
     int width, height;
     String title;
     Mat m;
+    ImageProcessor imgPro;
     
     // Constructor
     public ImageViewer(String text)
@@ -34,10 +35,14 @@ public class ImageViewer
         // valores de ancho y alto por defecto
         width = 640;
         height = 480;
+        // Inicializamos el procesador de imagenes
+        imgPro = new ImageProcessor();
+        // Inicializamos los componentes de swing
+        initComponents();
     }
     
-    // Inicializamos componentes
-    public void show(Mat m)
+    // Inicializamos componentes Swing
+    public void initComponents()
     {
         v = new JFrame(title);
         v.setSize(width + 20, height + 20);
@@ -52,9 +57,6 @@ public class ImageViewer
         
         lblImg = new JLabel();
         lblImg.setBounds(0, 0, width, height);
-        ImageProcessor imgPro = new ImageProcessor();
-        Image img = imgPro.toBufferedImage(m);
-        lblImg.setIcon(new ImageIcon(img));
         
         // Añadimos componentes
         v.add(mainPanel);
@@ -62,6 +64,13 @@ public class ImageViewer
         
         // Mostramos ventana
         v.setVisible(true);
+    }
+    
+    // Inicializamos componentes
+    public void show(Mat m)
+    {
+        // Convertimos la matriz en imagen y la mostramos
+        lblImg.setIcon(new ImageIcon(imgPro.toBufferedImage(m)));
     }
     
     // configuración
