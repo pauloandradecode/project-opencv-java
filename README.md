@@ -1,4 +1,4 @@
-# project opencv with java
+# Project opencv with java
 
 En este repositorio encontraras ejemplos de como implementar Java con OpenCV, así como los conceptos basicos para utilizar la libreria de OpenCV.
 
