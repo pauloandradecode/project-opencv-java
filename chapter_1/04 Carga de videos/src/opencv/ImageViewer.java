@@ -7,7 +7,6 @@ package opencv;
 
 // Importamos las librerias
 import java.awt.Color;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +30,7 @@ public class ImageViewer
     // Constructor
     public ImageViewer(String text)
     {   
+        // titulo de la ventana
         title = text;
         // valores de ancho y alto por defecto
         width = 640;
@@ -47,6 +47,7 @@ public class ImageViewer
         v = new JFrame(title);
         v.setSize(width + 20, height + 20);
         v.setResizable(false);
+        v.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         v.setLayout(null);
         
         // Componentes
@@ -79,6 +80,10 @@ public class ImageViewer
         // Actualizamos los valores
         width = m.cols();
         height = m.rows();
+        // Redimencionamos los elementos
+        v.setSize(width + 20, height + 20);
+        lblImg.setBounds(0, 0, width, height);
+        mainPanel.setBounds(10, 10, width, height);
     }
     
     // configuración
